@@ -8,19 +8,21 @@ function initHome() {
   let today = Date.now();
 
   timer().start();
-
-  arrayFromRange(1, 25).forEach((day, index) => {
-    let canvas = document.createElement("canvas");
-    canvas.classList.add("calendar-box");
-
-    canvas.dataset.day = day;
-    canvas.width = canvas.height = root.offsetWidth / 5;
-
-    root.appendChild(canvas);
-  });
-
+  createBoxes();
   blokFutureDate();
   drawBoxes();
+
+  function createBoxes() {
+    arrayFromRange(1, 25).forEach((day, index) => {
+      let canvas = document.createElement("canvas");
+      canvas.classList.add("calendar-box");
+
+      canvas.dataset.day = day;
+      canvas.width = canvas.height = root.offsetWidth / 5;
+
+      root.appendChild(canvas);
+    });
+  }
 
   function blokFutureDate() {
     let boxes = document.querySelectorAll(".calendar-box");
