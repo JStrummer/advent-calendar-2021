@@ -1,17 +1,35 @@
 "use strict";
 
-let level = new Level(1);
+calendarImage.addEventListener("load", () => {
+  initHome();
+  goToHome();
+});
 
-document.addEventListener("keydown", ev => {
-  if (/^Arrow/.test(ev.key)) {
-    let direction = ev.key.match(/^Arrow([a-zA-Z]+)/)[1].toLowerCase();
-    if (level.tiles.move(direction)) {
-      level.draw.grid(level.tiles.tiles);
+const homeButton = document.getElementById("home-button");
+homeButton.addEventListener("click", ev => {
+  ev.preventDefault();
+  goToHome();
+});
 
-      if (level.won) {
-        console.log("WINNER");
-        level.draw.solution();
-      }
-    }
+let level = null;
+
+document.addEventListener("click", ev => {
+  let { day } = ev.target.dataset;
+  if (isDef(day) && !ev.target.classList.contains("blocked")) {
+    goToPuzzle(day);
   }
 });
+
+function goToHome() {
+  home.style.display = "block";
+  puzzle.style.display = "none";
+
+  level = null;
+}
+
+function goToPuzzle(level) {
+  home.style.display = "none";
+  puzzle.style.display = "block";
+
+  level = new Level(level);
+}

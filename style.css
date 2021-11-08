@@ -1,0 +1,45 @@
+/* set all elements to use border-box */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+#app {
+  width: 500px;
+}
+
+#home,
+#puzzle,
+#puzzle-grid {
+  width: 100%;
+}
+
+#calendar {
+  display: none;
+}
+
+#calendar-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.calendar-box {
+  border: 2px solid white;
+}
+
+.calendar-box:hover {
+  cursor: pointer;
+  border-color: black;
+}
+
+.calendar-box.blocked:hover {
+  cursor: not-allowed;
+  border-color: white;
+}

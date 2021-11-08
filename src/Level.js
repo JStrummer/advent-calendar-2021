@@ -13,6 +13,8 @@ class Level {
   init() {
     this.tiles.shuffle();
     this.draw.init(this.tiles.tiles);
+
+    document.addEventListener("keydown", this.handleClick.bind(this));
   }
 
   get won() {
@@ -26,5 +28,19 @@ class Level {
     }
 
     return result;
+  }
+
+  handleClick(ev) {
+    if (/^Arrow/.test(ev.key)) {
+      let direction = ev.key.match(/^Arrow([a-zA-Z]+)/)[1].toLowerCase();
+      if (this.tiles.move(direction)) {
+        this.draw.grid(this.tiles.tiles);
+
+        if (this.won) {
+          console.log("WINNER");
+          this.draw.solution();
+        }
+      }
+    }
   }
 }

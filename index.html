@@ -2,12 +2,33 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
     <title>SLIDE PUZZLE</title>
   </head>
   <body>
-    <canvas id="canvas" width="300" height="300"></canvas>
+    <div id="app">
+      <div id="home">
+        <div id="countdown-container">
+          Oggi e' il <span id="current-date"></span><br />
+          e mancano <span id="countdown"></span> a Natale
+        </div>
+        <div id="calendar-container"></div>
+      </div>
+
+      <div id="puzzle">
+        <div id="puzzle-nav">
+          <button type="button" name="button" id="home-button">HOME</button>
+        </div>
+        <canvas id="puzzle-grid"></canvas>
+      </div>
+
+      <img id="calendar" src="images/calendar.jpg" />
+    </div>
 
     <script src="src\utils.js" charset="utf-8"></script>
+    <script src="src\globals.js" charset="utf-8"></script>
+    <script src="src\timer.js" charset="utf-8"></script>
+    <script src="src\home.js" charset="utf-8"></script>
     <script src="src\Grid.js" charset="utf-8"></script>
     <script src="src\Draw.js" charset="utf-8"></script>
     <script src="src\Level.js" charset="utf-8"></script>

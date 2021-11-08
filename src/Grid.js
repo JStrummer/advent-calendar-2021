@@ -1,3 +1,5 @@
+"use strict";
+
 class Grid {
   constructor(tilesNumber) {
     this.tiles = arrayFromRange(-1, tilesNumber - 2);
