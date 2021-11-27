@@ -68,8 +68,16 @@ function isDef(v) {
   return not(isUndefined)(v);
 }
 
+function isNull(v) {
+  return v === null;
+}
+
 function not(fn) {
   return function negate(...args) {
     return !fn(...args);
   };
+}
+
+function getCoord(event) {
+  return { x: event.offsetX, y: event.offsetY };
 }
