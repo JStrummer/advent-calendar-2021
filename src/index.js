@@ -1,5 +1,7 @@
 "use strict";
 
+let level = null;
+
 calendarImage.addEventListener("load", () => {
   initHome();
   goToHome();
@@ -11,7 +13,12 @@ homeButton.addEventListener("click", ev => {
   goToHome();
 });
 
-let level = null;
+const restartButton = document.getElementById("restart-button");
+restartButton.addEventListener("click", ev => {
+  ev.preventDefault();
+
+  level = new Level(level.number);
+});
 
 document.addEventListener("click", ev => {
   let { day } = ev.target.dataset;
@@ -27,9 +34,9 @@ function goToHome() {
   level = null;
 }
 
-function goToPuzzle(level) {
+function goToPuzzle(day) {
   home.style.display = "none";
   puzzle.style.display = "block";
 
-  level = new Level(level);
+  level = new Level(day);
 }
